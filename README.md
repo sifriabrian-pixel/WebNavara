@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sitio web de Navara
 
-## Getting Started
+Sitio Next.js + Tailwind para Navara Estética Avanzada y Bienestar Integral.
 
-First, run the development server:
+## Cómo correr el sitio en tu computadora
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Después abrí [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Cómo cambiar precios, promos y datos del negocio (sin tocar código)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Todo lo que cambia seguido está en dos archivos, dentro de la carpeta `content/`:
 
-## Learn More
+### 1. `content/site.ts`
+Acá vive:
+- Número de WhatsApp, dirección, horario, ciudad
+- La **promoción activa del mes** (título, descripción, vigencia, mensaje de WhatsApp)
+- Los pilares de marca, preguntas frecuentes y testimonios
+- El Pixel ID de Meta y el Measurement ID de GA4 (dejalos vacíos hasta tenerlos)
 
-To learn more about Next.js, take a look at the following resources:
+Para cambiar la promo de un mes a otro, editá el objeto `activePromotion` en ese archivo. Para desactivarla, poné `active: false`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 2. `content/tratamientos.ts`
+Acá está el listado completo de tratamientos. Cada tratamiento es un bloque con nombre, descripción, beneficios y el mensaje de WhatsApp pre-armado para ese servicio.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Para **agregar un tratamiento nuevo**: copiá un bloque existente, cambiale el `slug` (sin espacios ni tildes), el nombre y la descripción. La página `/tratamientos/[ese-slug]` se genera sola, y también aparece automáticamente en la grilla de servicios del home.
 
-## Deploy on Vercel
+## Qué falta completar
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Buscá el texto `[PENDIENTE-CLIENTE]` en `content/site.ts` — son los datos reales que todavía faltan (número de WhatsApp, dirección, horario, nombre del profesional, precios, mapa embebido y testimonios). El sitio funciona igual mientras tanto, pero con placeholders visibles.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Tracking (Meta Pixel / GA4)
+
+Apenas tengas el Pixel ID de Meta Ads o el Measurement ID de GA4, pegalos en `business.metaPixelId` / `business.ga4Id` dentro de `content/site.ts`. No hace falta tocar nada más: cada botón de WhatsApp del sitio ya dispara el evento `Contact` / `WhatsAppClick` automáticamente, con el nombre de la sección desde donde se clickeó.
+
+## Deploy
+
+Pensado para desplegarse en [Vercel](https://vercel.com/new). Antes de lanzar a producción, reemplazá el dominio placeholder en `app/sitemap.ts` y `app/robots.ts` por el dominio final.
