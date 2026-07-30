@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { business } from "@/content/site";
 import { WhatsappButton } from "@/components/WhatsappButton";
+import { MapEmbed } from "@/components/MapEmbed";
 
 export const metadata: Metadata = {
   title: "Contacto",
@@ -33,11 +34,8 @@ export default function ContactoPage() {
         </div>
       </div>
 
-      <div className="mb-10 h-64 w-full overflow-hidden rounded-2xl border border-[var(--navara-tan)]/40 bg-[var(--navara-tan)]/10">
-        {/* [PENDIENTE-CLIENTE] Reemplazar por iframe de Google Maps con la dirección real */}
-        <div className="flex h-full items-center justify-center text-sm text-[var(--navara-brown)]/70">
-          Mapa: [PENDIENTE-CLIENTE dirección]
-        </div>
+      <div className="mb-10 h-64 w-full overflow-hidden rounded-2xl border border-[var(--navara-tan)]/40">
+        <MapEmbed />
       </div>
 
       <WhatsappButton

@@ -5,9 +5,10 @@ export const business = {
   name: "Navara",
   fullName: "Navara Estética Avanzada y Bienestar Integral",
   tagline: "Belleza que conecta. Bienestar que transforma.",
-  whatsappNumber: "595XXXXXXXXX", // [PENDIENTE-CLIENTE] formato +595...
-  city: "[PENDIENTE-CLIENTE]", // ej. "Asunción"
-  address: "[PENDIENTE-CLIENTE]",
+  whatsappNumber: "595983734292",
+  city: "Asunción",
+  address: "Teniente Cabrera Ruiz 451, Francis Morice",
+  mapsQuery: "Teniente Cabrera Ruiz 451, Francis Morice, Asunción, Paraguay",
   hours: "[PENDIENTE-CLIENTE]",
   professional: {
     name: "[PENDIENTE-CLIENTE]",

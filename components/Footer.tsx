@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { business } from "@/content/site";
 import { WhatsappButton } from "@/components/WhatsappButton";
+import { MapEmbed } from "@/components/MapEmbed";
 
 export function Footer() {
   return (
@@ -27,11 +28,8 @@ export function Footer() {
           <p className="mb-1">{business.address}</p>
           <p className="mb-1">{business.city}</p>
           <p className="mb-4">{business.hours}</p>
-          <div className="h-40 w-full overflow-hidden rounded-xl border border-[var(--navara-tan)]/40 bg-[var(--navara-tan)]/10">
-            {/* [PENDIENTE-CLIENTE] Reemplazar por iframe de Google Maps con la dirección real */}
-            <div className="flex h-full items-center justify-center text-xs text-[var(--navara-brown)]/70">
-              Mapa: [PENDIENTE-CLIENTE dirección]
-            </div>
+          <div className="h-40 w-full overflow-hidden rounded-xl border border-[var(--navara-tan)]/40">
+            <MapEmbed />
           </div>
         </div>
 
