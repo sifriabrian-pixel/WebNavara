@@ -85,12 +85,22 @@ export const activePromotion = {
   whatsappMessage: "Hola, quiero info sobre la promoción del mes",
 };
 
-export const testimonials: {
-  name: string;
-  text: string;
-  initialsOnly?: boolean;
-}[] = [
-  // [PENDIENTE-CLIENTE] Agregar testimonios reales con consentimiento del paciente.
-  // Ejemplo de estructura:
-  // { name: "M. G.", text: "Excelente atención y resultado muy natural.", initialsOnly: true },
+export type Testimonio = {
+  nombre: string;
+  tratamiento: string;
+  texto: string;
+  calificacion: number; // 1 a 5
+  fecha: string; // "YYYY-MM"
+};
+
+// Testimonios reales, cargados con consentimiento de la paciente.
+// Para sumar uno nuevo, agregá otro objeto con la misma forma.
+export const testimonials: Testimonio[] = [
+  {
+    nombre: "Sonia García",
+    tratamiento: "Rejuvenecimiento facial",
+    texto: "Fui por las líneas de expresión y terminé enamorada de todo el proceso. Desde la primera consulta me explicaron exactamente qué iban a hacer y por qué, sin venderme nada de más. Los resultados se ven naturales, nadie nota que me hice algo, solo que 'se me ve bien la piel'. Volví dos veces más para otros tratamientos.",
+    calificacion: 5,
+    fecha: "2026-06",
+  },
 ];
