@@ -21,10 +21,18 @@ export const business = {
   ga4Id: "", // Pegá el Measurement ID de GA4 (formato G-XXXXXXX) cuando lo tengas.
 };
 
-export const trustBar = [
-  "[PENDIENTE-CLIENTE] años de trayectoria",
-  "[PENDIENTE-CLIENTE] tratamientos realizados",
-  "[PENDIENTE-CLIENTE] certificación profesional",
+export type TrustStat = {
+  value: number | null; // null = todavía sin confirmar por el cliente (se muestra como placeholder, sin animar)
+  suffix?: string; // ej. "+"
+  label: string;
+};
+
+// Cuando el cliente confirme un número real, cambiá `value` de null al número:
+// la stats bar lo anima contando hacia arriba automáticamente al entrar en pantalla.
+export const trustStats: TrustStat[] = [
+  { value: null, suffix: "+", label: "años de trayectoria" },
+  { value: null, suffix: "+", label: "tratamientos realizados" },
+  { value: null, label: "certificación profesional" },
 ];
 
 export const pillars = [
