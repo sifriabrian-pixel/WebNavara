@@ -120,7 +120,7 @@ export function Hero() {
               className="absolute inset-0"
             >
               <Image
-                src="/brand/hero-portrait.png"
+                src="/brand/hero-principal.png"
                 alt="Paciente con piel radiante y saludable, resultado de tratamientos Navara"
                 fill
                 priority
