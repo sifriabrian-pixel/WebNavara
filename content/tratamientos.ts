@@ -11,6 +11,7 @@ export type Tratamiento = {
   beneficios: string[];
   precioDesde?: string; // ej. "Desde ₲350.000" — dejar undefined si no hay precio público
   whatsappMensaje: string;
+  imagen?: string; // ruta en /public, ej. "/brand/servicios-tratamiento.png"
 };
 
 export const tratamientos: Tratamiento[] = [
@@ -29,6 +30,7 @@ export const tratamientos: Tratamiento[] = [
     ],
     precioDesde: undefined,
     whatsappMensaje: "Hola, quiero info sobre el tratamiento de Peeling",
+    imagen: "/brand/servicios-tratamiento.png",
   },
   {
     slug: "dermaplaning",
@@ -45,6 +47,7 @@ export const tratamientos: Tratamiento[] = [
     ],
     precioDesde: undefined,
     whatsappMensaje: "Hola, quiero info sobre Dermaplaning",
+    imagen: "/brand/servicios-tratamiento.png",
   },
   {
     slug: "extraccion-de-lunares",
@@ -77,6 +80,7 @@ export const tratamientos: Tratamiento[] = [
     ],
     precioDesde: undefined,
     whatsappMensaje: "Hola, quiero info sobre rejuvenecimiento facial",
+    imagen: "/brand/servicios-tratamiento.png",
   },
   {
     slug: "pilates",
