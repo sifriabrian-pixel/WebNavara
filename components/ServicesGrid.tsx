@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { tratamientos } from "@/content/tratamientos";
 import { WhatsappButton } from "@/components/WhatsappButton";
@@ -46,8 +47,18 @@ export function ServicesGrid() {
               whileInView="visible"
               viewport={{ once: true, margin: "-80px" }}
               whileHover={reduced ? undefined : { y: -4, transition: { duration: 0.22 } }}
-              className="group flex flex-col rounded-2xl border border-[var(--navara-tan)]/30 bg-[var(--navara-cream)] p-6 shadow-sm transition-shadow duration-[250ms] hover:shadow-lg"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-[var(--navara-tan)]/30 bg-[var(--navara-cream)] p-6 shadow-sm transition-shadow duration-[250ms] hover:shadow-lg"
             >
+              {tratamiento.imagen && (
+                <div className="relative -mx-6 -mt-6 mb-4 aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={tratamiento.imagen}
+                    alt={`Tratamiento de ${tratamiento.nombre} en Navara`}
+                    fill
+                    className="object-cover transition-transform duration-[250ms] group-hover:scale-[1.03]"
+                  />
+                </div>
+              )}
               <div className="mb-3 flex items-center gap-2">
                 <span
                   className={`h-2 w-2 rounded-full border transition-transform duration-[250ms] group-hover:scale-125 ${category.icon}`}
