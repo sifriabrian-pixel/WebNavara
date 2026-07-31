@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { pillars } from "@/content/site";
 
 export function WhyNavara() {
@@ -13,18 +14,31 @@ export function WhyNavara() {
           </h2>
         </div>
 
-        <div className="grid gap-8 sm:grid-cols-3">
-          {pillars.map((pillar) => (
-            <div key={pillar.title} className="text-center">
-              <div className="mx-auto mb-4 h-12 w-12 rounded-full border border-[var(--navara-terracotta)]/40" />
-              <h3 className="mb-2 font-serif text-lg text-[var(--navara-ink)]">
-                {pillar.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-[var(--navara-brown)]">
-                {pillar.description}
-              </p>
-            </div>
-          ))}
+        <div className="grid items-center gap-10 md:grid-cols-2 md:gap-14">
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
+            <Image
+              src="/brand/valores-glow.png"
+              alt="Paciente con piel luminosa, reflejo del cuidado integral de Navara"
+              fill
+              className="object-cover"
+            />
+          </div>
+
+          <div className="space-y-8">
+            {pillars.map((pillar) => (
+              <div key={pillar.title} className="flex gap-4">
+                <div className="mt-1 h-10 w-10 shrink-0 rounded-full border border-[var(--navara-terracotta)]/40" />
+                <div>
+                  <h3 className="mb-2 font-serif text-lg text-[var(--navara-ink)]">
+                    {pillar.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-[var(--navara-brown)]">
+                    {pillar.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
