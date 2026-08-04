@@ -10,10 +10,6 @@ export const business = {
   address: "Teniente Cabrera Ruiz 451, Francis Morice",
   mapsQuery: "Teniente Cabrera Ruiz 451, Francis Morice, Asunción, Paraguay",
   hours: "[PENDIENTE-CLIENTE]",
-  professional: {
-    name: "[PENDIENTE-CLIENTE]",
-    credential: "[PENDIENTE-CLIENTE]",
-  },
   social: {
     instagram: "[PENDIENTE-CLIENTE]",
     facebook: "[PENDIENTE-CLIENTE]",
@@ -21,6 +17,33 @@ export const business = {
   metaPixelId: "", // Pegá el Pixel ID acá cuando lo tengas. Vacío = no se carga el pixel.
   ga4Id: "", // Pegá el Measurement ID de GA4 (formato G-XXXXXXX) cuando lo tengas.
 };
+
+export type TeamMember = {
+  nombre: string;
+  rol: string;
+  descripcion: string;
+};
+
+export const team: TeamMember[] = [
+  {
+    nombre: "Dra. Alma Duarte",
+    rol: "Médica cirujana",
+    descripcion:
+      "Medicina estética: rostro, capilar y corporal. Miembro de @asomestetica.",
+  },
+  {
+    nombre: "Karen López",
+    rol: "Técnico Superior en Estética Integral — Cosmiatra y Esteticista",
+    descripcion:
+      "Tratamientos faciales y corporales: acné, manchas y antiage. Masajes reductores, relajantes, descontracturantes, reflexología podal, entre otros.",
+  },
+  {
+    nombre: "Sonia García",
+    rol: "Cosmetóloga, Cosmiatra y Esteticista",
+    descripcion:
+      "Entrenadora deportiva e instructora de pilates, estudiante de yoga. Miembro de El Arte de Vivir.",
+  },
+];
 
 export type TrustStat = {
   value: number | null; // null = todavía sin confirmar por el cliente (se muestra como placeholder, sin animar)
@@ -95,13 +118,7 @@ export type Testimonio = {
 };
 
 // Testimonios reales, cargados con consentimiento de la paciente.
+// Importante: no cargar acá testimonios de personas que trabajan en Navara
+// (ver "team" arriba) presentados como pacientes — es publicidad engañosa.
 // Para sumar uno nuevo, agregá otro objeto con la misma forma.
-export const testimonials: Testimonio[] = [
-  {
-    nombre: "Sonia García",
-    tratamiento: "Rejuvenecimiento facial",
-    texto: "Fui por las líneas de expresión y terminé enamorada de todo el proceso. Desde la primera consulta me explicaron exactamente qué iban a hacer y por qué, sin venderme nada de más. Los resultados se ven naturales, nadie nota que me hice algo, solo que 'se me ve bien la piel'. Volví dos veces más para otros tratamientos.",
-    calificacion: 5,
-    fecha: "2026-06",
-  },
-];
+export const testimonials: Testimonio[] = [];

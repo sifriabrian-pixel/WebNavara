@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { business, pillars } from "@/content/site";
+import { business, pillars, team } from "@/content/site";
 import { WhatsappButton } from "@/components/WhatsappButton";
 
 export const metadata: Metadata = {
@@ -20,13 +20,28 @@ export default function NosotrosPage() {
         {business.tagline}
       </p>
 
-      <div className="mb-10 rounded-2xl border border-[var(--navara-tan)]/30 bg-[var(--navara-beige)] p-6">
-        <h2 className="mb-2 font-serif text-lg text-[var(--navara-ink)]">
-          Profesional a cargo
+      <div className="mb-10">
+        <h2 className="mb-4 font-serif text-lg text-[var(--navara-ink)]">
+          Nuestro equipo
         </h2>
-        <p className="text-sm text-[var(--navara-brown)]">
-          {business.professional.name} — {business.professional.credential}
-        </p>
+        <div className="grid gap-4 sm:grid-cols-3">
+          {team.map((member) => (
+            <div
+              key={member.nombre}
+              className="rounded-2xl border border-[var(--navara-tan)]/30 bg-[var(--navara-beige)] p-6"
+            >
+              <p className="mb-1 font-serif text-base text-[var(--navara-ink)]">
+                {member.nombre}
+              </p>
+              <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-[var(--navara-sage)]">
+                {member.rol}
+              </p>
+              <p className="text-sm leading-relaxed text-[var(--navara-brown)]">
+                {member.descripcion}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="mb-10 grid gap-6 sm:grid-cols-3">
