@@ -7,19 +7,19 @@ export function PromoBanner() {
 
   return (
     <section className="mx-auto max-w-6xl px-5 sm:px-8">
-      <div className="flex flex-col items-start gap-6 rounded-3xl bg-[var(--navara-mustard)]/25 p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
+      <div className="flex flex-col items-start gap-6 rounded-3xl bg-[var(--navara-ink)] p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
         <div>
-          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--navara-terracotta)]">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--navara-mustard)]">
             Promoción activa
           </p>
-          <h3 className="mb-2 font-serif text-2xl text-[var(--navara-ink)]">
+          <h3 className="mb-2 font-serif text-2xl text-[var(--navara-cream)]">
             {activePromotion.title}
           </h3>
-          <p className="max-w-lg text-sm leading-relaxed text-[var(--navara-brown)]">
+          <p className="max-w-lg text-sm leading-relaxed text-[var(--navara-cream)]/80">
             {activePromotion.description}
           </p>
           {activePromotion.validUntil && (
-            <p className="mt-2 text-xs text-[var(--navara-brown)]/70">
+            <p className="mt-2 text-xs text-[var(--navara-cream)]/50">
               Vigencia: {activePromotion.validUntil}
             </p>
           )}
@@ -33,7 +33,7 @@ export function PromoBanner() {
           </WhatsappButton>
           <Link
             href="/promociones"
-            className="text-xs font-medium text-[var(--navara-brown)] hover:underline"
+            className="text-xs font-medium text-[var(--navara-cream)]/70 hover:text-[var(--navara-cream)] hover:underline"
           >
             Ver todas las promociones
           </Link>
