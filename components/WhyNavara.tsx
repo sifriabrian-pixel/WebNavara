@@ -1,5 +1,9 @@
 import Image from "next/image";
+import { HeartPulse, Leaf, Sparkles } from "lucide-react";
 import { pillars } from "@/content/site";
+
+// Un ícono por pilar, en el mismo orden que "pillars" en content/site.ts.
+const pillarIcons = [Sparkles, Leaf, HeartPulse];
 
 export function WhyNavara() {
   return (
@@ -25,9 +29,13 @@ export function WhyNavara() {
           </div>
 
           <div className="space-y-8">
-            {pillars.map((pillar) => (
+            {pillars.map((pillar, i) => {
+              const Icon = pillarIcons[i] ?? Sparkles;
+              return (
               <div key={pillar.title} className="flex gap-4">
-                <div className="mt-1 h-10 w-10 shrink-0 rounded-full border border-[var(--navara-terracotta)]/40" />
+                <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--navara-terracotta)]/40">
+                  <Icon strokeWidth={1.25} className="h-5 w-5 text-[var(--navara-terracotta)]" />
+                </div>
                 <div>
                   <h3 className="mb-2 font-serif text-lg text-[var(--navara-ink)]">
                     {pillar.title}
@@ -37,7 +45,8 @@ export function WhyNavara() {
                   </p>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
