@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FacebookIcon, InstagramIcon } from "@/components/icons/SocialIcons";
 import { business } from "@/content/site";
 import { WhatsappButton } from "@/components/WhatsappButton";
 import { MapEmbed } from "@/components/MapEmbed";
@@ -40,12 +41,20 @@ export function Footer() {
           <WhatsappButton message="Hola, quiero info sobre Navara" source="footer">
             Chatear por WhatsApp
           </WhatsappButton>
-          <div className="flex gap-4 text-sm text-[var(--navara-brown)]">
-            <Link href="/" className="hover:text-[var(--navara-terracotta)]">
-              Instagram
+          <div className="flex gap-4 text-[var(--navara-brown)]">
+            <Link
+              href="/"
+              aria-label="Instagram de Navara"
+              className="transition-colors hover:text-[var(--navara-terracotta)]"
+            >
+              <InstagramIcon className="h-5 w-5" />
             </Link>
-            <Link href="/" className="hover:text-[var(--navara-terracotta)]">
-              Facebook
+            <Link
+              href="/"
+              aria-label="Facebook de Navara"
+              className="transition-colors hover:text-[var(--navara-terracotta)]"
+            >
+              <FacebookIcon className="h-5 w-5" />
             </Link>
           </div>
         </div>
