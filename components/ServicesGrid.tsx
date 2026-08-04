@@ -3,26 +3,72 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { tratamientos } from "@/content/tratamientos";
+import { Leaf, Sparkles } from "lucide-react";
+import { tratamientos, type Tratamiento } from "@/content/tratamientos";
+import { servicioDestacado } from "@/content/site";
 import { WhatsappButton } from "@/components/WhatsappButton";
-import { fadeUpStaggerVariants } from "@/lib/motion";
+import { fadeUpVariants, fadeUpStaggerVariants } from "@/lib/motion";
 
 const categoryStyles = {
   estetica: {
     label: "Estética",
     badge: "bg-[var(--navara-terracotta)]/12 text-[var(--navara-terracotta)]",
     icon: "border-[var(--navara-terracotta)]/50",
+    placeholderBg: "bg-[var(--navara-terracotta)]/10",
+    placeholderIcon: "text-[var(--navara-terracotta)]/50",
+    CategoryIcon: Sparkles,
   },
   bienestar: {
     label: "Bienestar",
     badge: "bg-[var(--navara-sage)]/15 text-[var(--navara-sage)]",
     icon: "border-[var(--navara-sage)]/50",
+    placeholderBg: "bg-[var(--navara-sage)]/12",
+    placeholderIcon: "text-[var(--navara-sage)]/50",
+    CategoryIcon: Leaf,
   },
 } as const;
 
+function ServiceMedia({
+  tratamiento,
+  className = "",
+  iconClassName = "h-10 w-10",
+}: {
+  tratamiento: Tratamiento;
+  className?: string;
+  iconClassName?: string;
+}) {
+  const category = categoryStyles[tratamiento.categoria];
+  const { CategoryIcon } = category;
+
+  if (tratamiento.imagen) {
+    return (
+      <div className={`relative overflow-hidden ${className}`}>
+        <Image
+          src={tratamiento.imagen}
+          alt={`Tratamiento de ${tratamiento.nombre} en Navara`}
+          fill
+          className="object-cover transition-transform duration-[250ms] group-hover:scale-[1.03]"
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className={`relative flex items-center justify-center overflow-hidden ${category.placeholderBg} ${className}`}
+    >
+      <CategoryIcon strokeWidth={1.25} className={`${category.placeholderIcon} ${iconClassName}`} />
+    </div>
+  );
+}
+
 export function ServicesGrid() {
   const reduced = !!useReducedMotion();
-  const variants = fadeUpStaggerVariants(reduced);
+  const staggerVariants = fadeUpStaggerVariants(reduced);
+  const featuredVariants = fadeUpVariants(reduced);
+
+  const featured = tratamientos.find((t) => t.slug === servicioDestacado);
+  const resto = tratamientos.filter((t) => t.slug !== servicioDestacado);
 
   return (
     <section id="servicios" className="mx-auto max-w-6xl px-5 py-16 sm:px-8 md:py-24">
@@ -35,30 +81,74 @@ export function ServicesGrid() {
         </h2>
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {tratamientos.map((tratamiento, i) => {
+      {featured && (
+        <motion.div
+          custom={0}
+          variants={featuredVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="group mb-8 grid overflow-hidden rounded-2xl border border-[var(--navara-tan)]/30 bg-[var(--navara-cream)] shadow-sm transition-shadow duration-[250ms] hover:shadow-lg sm:grid-cols-2"
+        >
+          <ServiceMedia
+            tratamiento={featured}
+            className="aspect-[4/3] sm:aspect-auto"
+            iconClassName="h-16 w-16"
+          />
+          <div className="flex flex-col justify-center p-8">
+            <div className="mb-3 flex items-center gap-2">
+              <span
+                className={`rounded-full px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide ${categoryStyles[featured.categoria].badge}`}
+              >
+                {categoryStyles[featured.categoria].label}
+              </span>
+              <span className="text-xs font-semibold uppercase tracking-wide text-[var(--navara-mustard)]">
+                Tratamiento destacado
+              </span>
+            </div>
+            <h3 className="mb-3 font-serif text-2xl text-[var(--navara-ink)] sm:text-3xl">
+              {featured.nombre}
+            </h3>
+            <p className="mb-6 text-sm leading-relaxed text-[var(--navara-brown)]">
+              {featured.descripcion}
+            </p>
+            <div className="flex flex-wrap items-center gap-4">
+              <Link
+                href={`/tratamientos/${featured.slug}`}
+                className="group/link relative text-sm font-semibold text-[var(--navara-terracotta)]"
+              >
+                Ver más
+                <span className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-[var(--navara-terracotta)] transition-transform duration-[250ms] group-hover/link:scale-x-100" />
+              </Link>
+              <WhatsappButton
+                message={featured.whatsappMensaje}
+                source={`servicio-destacado-${featured.slug}`}
+              >
+                Consultar
+              </WhatsappButton>
+            </div>
+          </div>
+        </motion.div>
+      )}
+
+      <div className="grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {resto.map((tratamiento, i) => {
           const category = categoryStyles[tratamiento.categoria];
           return (
             <motion.div
               key={tratamiento.slug}
               custom={i}
-              variants={variants}
+              variants={staggerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-80px" }}
               whileHover={reduced ? undefined : { y: -4, transition: { duration: 0.22 } }}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-[var(--navara-tan)]/30 bg-[var(--navara-cream)] p-6 shadow-sm transition-shadow duration-[250ms] hover:shadow-lg"
+              className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[var(--navara-tan)]/30 bg-[var(--navara-cream)] p-6 shadow-sm transition-shadow duration-[250ms] hover:shadow-lg"
             >
-              {tratamiento.imagen && (
-                <div className="relative -mx-6 -mt-6 mb-4 aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={tratamiento.imagen}
-                    alt={`Tratamiento de ${tratamiento.nombre} en Navara`}
-                    fill
-                    className="object-cover transition-transform duration-[250ms] group-hover:scale-[1.03]"
-                  />
-                </div>
-              )}
+              <ServiceMedia
+                tratamiento={tratamiento}
+                className="-mx-6 -mt-6 mb-4 aspect-[4/3]"
+              />
               <div className="mb-3 flex items-center gap-2">
                 <span
                   className={`h-2 w-2 rounded-full border transition-transform duration-[250ms] group-hover:scale-125 ${category.icon}`}

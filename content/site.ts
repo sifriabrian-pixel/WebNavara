@@ -100,6 +100,11 @@ export const faqs = [
   },
 ];
 
+// Slug del tratamiento que se muestra como card destacada en "Nuestros servicios".
+// Cambiá este valor (debe matchear un "slug" de content/tratamientos.ts) para
+// promocionar otro tratamiento sin tocar componentes.
+export const servicioDestacado = "peeling";
+
 export const activePromotion = {
   active: true,
   title: "[PENDIENTE-CLIENTE] Promoción del mes",
