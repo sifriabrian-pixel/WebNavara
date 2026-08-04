@@ -22,8 +22,11 @@ export type TeamMember = {
   nombre: string;
   rol: string;
   descripcion: string;
+  fotoUrl?: string; // ruta en /public, ej. "/brand/equipo-alma-duarte.jpg". Sin foto real todavía: dejar undefined.
 };
 
+// Sin fotos reales todavía (llegan de la clínica) — fotoUrl queda undefined
+// y la card muestra un placeholder de silueta genérica hasta que se carguen.
 export const team: TeamMember[] = [
   {
     nombre: "Dra. Alma Duarte",
