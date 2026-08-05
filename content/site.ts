@@ -25,14 +25,15 @@ export type TeamMember = {
   fotoUrl?: string; // ruta en /public, ej. "/brand/equipo-alma-duarte.jpg". Sin foto real todavía: dejar undefined.
 };
 
-// Sin fotos reales todavía (llegan de la clínica) — fotoUrl queda undefined
-// y la card muestra un placeholder de silueta genérica hasta que se carguen.
+// Karen López todavía sin foto real (llega de la clínica) — fotoUrl queda
+// undefined y su card muestra el placeholder de silueta genérica hasta cargarla.
 export const team: TeamMember[] = [
   {
     nombre: "Dra. Alma Duarte",
     rol: "Médica cirujana",
     descripcion:
       "Medicina estética: rostro, capilar y corporal. Miembro de @asomestetica.",
+    fotoUrl: "/brand/equipo-alma-duarte.jpg",
   },
   {
     nombre: "Karen López",
@@ -43,6 +44,7 @@ export const team: TeamMember[] = [
   {
     nombre: "Sonia García",
     rol: "Cosmetóloga, Cosmiatra y Esteticista",
+    fotoUrl: "/brand/equipo-sonia-garcia.jpg",
     descripcion:
       "Entrenadora deportiva e instructora de pilates, estudiante de yoga. Miembro de El Arte de Vivir.",
   },
