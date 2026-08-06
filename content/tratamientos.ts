@@ -51,6 +51,22 @@ export const tratamientos: Tratamiento[] = [
     imagen: "/brand/servicio-tratamientos-faciales.png",
   },
   {
+    slug: "peeling",
+    nombre: "Peeling",
+    categoria: "estetica",
+    descripcionCorta:
+      "Renovación de la piel para una textura más uniforme y luminosa.",
+    descripcion:
+      "El peeling es un tratamiento de renovación cutánea que ayuda a mejorar la textura, el tono y la luminosidad de la piel. Ideal para sumar a una rutina de cuidado facial constante.",
+    beneficios: [
+      "Piel de aspecto más uniforme",
+      "Ayuda a disimular marcas superficiales",
+      "Rutina de mantenimiento facial",
+    ],
+    whatsappMensaje: "Hola, quiero info sobre Peeling",
+    imagen: "/brand/servicio-peeling.png",
+  },
+  {
     slug: "tratamientos-corporales",
     nombre: "Tratamientos corporales",
     categoria: "estetica",
