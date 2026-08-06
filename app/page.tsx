@@ -1,7 +1,6 @@
 import { Hero } from "@/components/Hero";
 import { TrustBar } from "@/components/TrustBar";
 import { ServicesGrid } from "@/components/ServicesGrid";
-import { FullBleedImage } from "@/components/FullBleedImage";
 import { PromoBanner } from "@/components/PromoBanner";
 import { WhyNavara } from "@/components/WhyNavara";
 import { Testimonials } from "@/components/Testimonials";
@@ -14,7 +13,6 @@ export default function Home() {
       <Hero />
       <TrustBar />
       <ServicesGrid />
-      <FullBleedImage />
       <PromoBanner />
       <WhyNavara />
       <Testimonials />
