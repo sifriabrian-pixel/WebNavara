@@ -32,6 +32,7 @@ export const tratamientos: Tratamiento[] = [
       "Sin tiempo de recuperación",
     ],
     whatsappMensaje: "Hola, quiero info sobre Depilación láser",
+    imagen: "/brand/servicio-depilacion-laser.png",
   },
   {
     slug: "tratamientos-faciales",
@@ -47,6 +48,7 @@ export const tratamientos: Tratamiento[] = [
       "Resultados naturales, no artificiales",
     ],
     whatsappMensaje: "Hola, quiero info sobre Tratamientos faciales",
+    imagen: "/brand/servicio-tratamientos-faciales.png",
   },
   {
     slug: "tratamientos-corporales",
@@ -62,6 +64,7 @@ export const tratamientos: Tratamiento[] = [
       "Parte de un enfoque de bienestar integral",
     ],
     whatsappMensaje: "Hola, quiero info sobre Tratamientos corporales",
+    imagen: "/brand/servicio-tratamientos-corporales.png",
   },
   {
     slug: "botox",
@@ -107,6 +110,7 @@ export const tratamientos: Tratamiento[] = [
       "Piel de aspecto más uniforme",
     ],
     whatsappMensaje: "Hola, quiero info sobre IPL",
+    imagen: "/brand/servicio-ipl.png",
   },
   {
     slug: "masajes-relajantes-descontracturantes",
@@ -123,6 +127,7 @@ export const tratamientos: Tratamiento[] = [
     ],
     whatsappMensaje:
       "Hola, quiero info sobre Masajes relajantes y descontracturantes",
+    imagen: "/brand/servicio-masajes.png",
   },
   {
     slug: "pilates",
@@ -138,6 +143,7 @@ export const tratamientos: Tratamiento[] = [
       "Complemento ideal a los tratamientos estéticos",
     ],
     whatsappMensaje: "Hola, quiero info sobre las clases de Pilates",
+    imagen: "/brand/servicio-pilates.png",
   },
 ];
 
