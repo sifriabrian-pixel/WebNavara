@@ -33,3 +33,24 @@ body {
   background: var(--navara-cream);
   color: var(--navara-ink);
 }
+
+/* Formas de fondo flotando, muy sutiles — usadas solo en Hero y CTA final. */
+@keyframes navara-float-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(4%, -6%) scale(1.08);
+  }
+}
+
+@keyframes navara-float-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-5%, 6%) scale(1.06);
+  }
+}

@@ -1,13 +1,39 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { WhatsappButton } from "@/components/WhatsappButton";
 import { fadeUpVariants } from "@/lib/motion";
 import { business, trustStats } from "@/content/site";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
+
+// Rotan de fondo con crossfade + zoom lento continuo (efecto Ken Burns).
+// Todas son fotos reales ya aprobadas para el sitio, sin repetir las que
+// ya se usan en otras secciones (servicios, "Por qué Navara").
+const HERO_IMAGES = [
+  {
+    src: "/brand/hero-principal.png",
+    alt: "Paciente con piel radiante y saludable, resultado de tratamientos Navara",
+  },
+  {
+    src: "/brand/hero-portrait.png",
+    alt: "Momento de cuidado y bienestar en Navara",
+  },
+  {
+    src: "/brand/servicios-tratamiento.png",
+    alt: "Especialista de Navara realizando un tratamiento estético",
+  },
+];
+
+const SLIDE_DURATION_MS = 7000;
 
 export function Hero() {
   const reduced = !!useReducedMotion();
@@ -20,12 +46,31 @@ export function Hero() {
   const variants = fadeUpVariants(reduced);
   const tratamientosStat = trustStats.find((s) => s.label === "tratamientos realizados");
 
+  const [imageIndex, setImageIndex] = useState(0);
+
+  useEffect(() => {
+    if (reduced) return;
+    const id = setInterval(() => {
+      setImageIndex((i) => (i + 1) % HERO_IMAGES.length);
+    }, SLIDE_DURATION_MS);
+    return () => clearInterval(id);
+  }, [reduced]);
+
   return (
     <section
       ref={sectionRef}
       className="relative overflow-hidden bg-[var(--navara-cream)]"
     >
-      <div className="mx-auto grid max-w-6xl items-center gap-14 px-5 py-16 sm:px-8 md:grid-cols-2 md:py-24">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-[var(--navara-terracotta)]/20 blur-3xl animate-[navara-float-1_18s_ease-in-out_infinite] motion-reduce:animate-none sm:h-96 sm:w-96"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-20 bottom-0 h-64 w-64 rounded-full bg-[var(--navara-sage)]/20 blur-3xl animate-[navara-float-2_20s_ease-in-out_infinite] motion-reduce:animate-none sm:h-80 sm:w-80"
+      />
+
+      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-14 px-5 py-16 sm:px-8 md:grid-cols-2 md:py-24">
         <div>
           <motion.div
             custom={0}
@@ -112,20 +157,32 @@ export function Hero() {
           <div className="pointer-events-none absolute -inset-x-2 -inset-y-4 rounded-sm border border-[var(--navara-tan)] sm:-inset-x-4 sm:translate-x-4" />
 
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-[var(--navara-beige)]">
-            <motion.div
-              style={{ y: parallaxY }}
-              initial={{ scale: reduced ? 1 : 1.06 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: reduced ? 0 : 1.2, ease: "easeOut" }}
-              className="absolute inset-0"
-            >
-              <Image
-                src="/brand/hero-principal.png"
-                alt="Paciente con piel radiante y saludable, resultado de tratamientos Navara"
-                fill
-                priority
-                className="object-cover object-[50%_15%]"
-              />
+            <motion.div style={{ y: parallaxY }} className="absolute inset-0">
+              <AnimatePresence mode="sync">
+                <motion.div
+                  key={HERO_IMAGES[imageIndex].src}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1.2, ease: "easeInOut" }}
+                  className="absolute inset-0"
+                >
+                  <motion.div
+                    initial={{ scale: 1 }}
+                    animate={{ scale: reduced ? 1 : 1.08 }}
+                    transition={{ duration: SLIDE_DURATION_MS / 1000, ease: "linear" }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={HERO_IMAGES[imageIndex].src}
+                      alt={HERO_IMAGES[imageIndex].alt}
+                      fill
+                      priority={imageIndex === 0}
+                      className="object-cover object-[50%_15%]"
+                    />
+                  </motion.div>
+                </motion.div>
+              </AnimatePresence>
             </motion.div>
           </div>
 
