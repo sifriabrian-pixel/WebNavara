@@ -70,7 +70,7 @@ export function Hero() {
         className="pointer-events-none absolute -right-20 bottom-0 h-64 w-64 rounded-full bg-[var(--navara-sage)]/20 blur-3xl animate-[navara-float-2_20s_ease-in-out_infinite] motion-reduce:animate-none sm:h-80 sm:w-80"
       />
 
-      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-14 px-5 py-16 sm:px-8 md:grid-cols-2 md:py-24">
+      <div className="relative z-10 mx-auto grid max-w-6xl items-start gap-14 px-5 py-16 sm:px-8 md:grid-cols-2 md:py-24">
         <div>
           <motion.div
             custom={0}
