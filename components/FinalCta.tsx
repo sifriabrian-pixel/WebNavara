@@ -1,6 +1,13 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
 import { WhatsappButton } from "@/components/WhatsappButton";
+import { fadeUpVariants } from "@/lib/motion";
 
 export function FinalCta() {
+  const reduced = !!useReducedMotion();
+  const variants = fadeUpVariants(reduced);
+
   return (
     <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8 md:py-24">
       <div className="relative overflow-hidden rounded-3xl bg-[var(--navara-ink)] px-8 py-14 text-center sm:px-16">
@@ -13,7 +20,13 @@ export function FinalCta() {
           className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-[var(--navara-terracotta)]/25 blur-3xl animate-[navara-float-1_18s_ease-in-out_infinite] motion-reduce:animate-none"
         />
 
-        <div className="relative z-10">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={variants}
+          className="relative z-10"
+        >
           <h2 className="mb-4 font-serif text-3xl text-[var(--navara-cream)] sm:text-4xl">
             Empecemos a cuidar tu bienestar
           </h2>
@@ -27,7 +40,7 @@ export function FinalCta() {
           >
             Escribinos por WhatsApp
           </WhatsappButton>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

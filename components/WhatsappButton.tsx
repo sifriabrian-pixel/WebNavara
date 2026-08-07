@@ -1,5 +1,6 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
 import { buildWhatsappLink } from "@/lib/whatsapp";
 
 declare global {
@@ -24,6 +25,7 @@ export function WhatsappButton({
   variant = "primary",
   className = "",
 }: WhatsappButtonProps) {
+  const reduced = !!useReducedMotion();
   const href = buildWhatsappLink(message);
 
   function handleClick() {
@@ -43,15 +45,18 @@ export function WhatsappButton({
       : "border border-[var(--navara-ink)]/20 text-[var(--navara-ink)] hover:bg-[var(--navara-beige)]";
 
   return (
-    <a
+    <motion.a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}
       data-whatsapp-source={source}
+      whileHover={reduced ? undefined : { scale: 1.03 }}
+      whileTap={reduced ? undefined : { scale: 0.97 }}
+      transition={{ duration: 0.15, ease: "easeOut" }}
       className={`${base} ${styles} ${className}`}
     >
       {children}
-    </a>
+    </motion.a>
   );
 }

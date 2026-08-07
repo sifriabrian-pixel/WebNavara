@@ -1,14 +1,27 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { motion, useReducedMotion } from "framer-motion";
 import { FacebookIcon, InstagramIcon } from "@/components/icons/SocialIcons";
 import { business } from "@/content/site";
 import { WhatsappButton } from "@/components/WhatsappButton";
 import { MapEmbed } from "@/components/MapEmbed";
+import { fadeUpVariants } from "@/lib/motion";
 
 export function Footer() {
+  const reduced = !!useReducedMotion();
+  const variants = fadeUpVariants(reduced);
+
   return (
     <footer className="border-t border-[var(--navara-tan)]/30 bg-[var(--navara-beige)]">
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-3">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-40px" }}
+        variants={variants}
+        className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-3"
+      >
         <div>
           <Image
             src="/brand/logo-principal.png"
@@ -58,7 +71,7 @@ export function Footer() {
             </Link>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       <div className="border-t border-[var(--navara-tan)]/30 py-5 text-center text-xs text-[var(--navara-brown)]/70">
         © {new Date().getFullYear()} {business.fullName}. Todos los derechos

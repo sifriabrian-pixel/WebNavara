@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { business, team } from "@/content/site";
 import { WhatsappButton } from "@/components/WhatsappButton";
-import { TeamCard } from "@/components/TeamCard";
+import { TeamGrid } from "@/components/TeamGrid";
 
 export const metadata: Metadata = {
   title: "Nosotros",
@@ -25,11 +25,7 @@ export default function NosotrosPage() {
         <h2 className="mb-6 font-serif text-lg text-[var(--navara-ink)]">
           Nuestro equipo
         </h2>
-        <div className="grid gap-6 sm:grid-cols-3">
-          {team.map((member) => (
-            <TeamCard key={member.nombre} member={member} />
-          ))}
-        </div>
+        <TeamGrid team={team} />
       </div>
 
       <WhatsappButton

@@ -1,13 +1,26 @@
+"use client";
+
 import Link from "next/link";
+import { motion, useReducedMotion } from "framer-motion";
 import { activePromotion } from "@/content/site";
 import { WhatsappButton } from "@/components/WhatsappButton";
+import { fadeUpVariants } from "@/lib/motion";
 
 export function PromoBanner() {
+  const reduced = !!useReducedMotion();
+  const variants = fadeUpVariants(reduced);
+
   if (!activePromotion.active) return null;
 
   return (
     <section className="mx-auto max-w-6xl px-5 sm:px-8">
-      <div className="flex flex-col items-start gap-6 rounded-3xl bg-[var(--navara-ink)] p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-80px" }}
+        variants={variants}
+        className="flex flex-col items-start gap-6 rounded-3xl bg-[var(--navara-ink)] p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10"
+      >
         <div>
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--navara-mustard)]">
             Promoción activa
@@ -38,7 +51,7 @@ export function PromoBanner() {
             Ver todas las promociones
           </Link>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

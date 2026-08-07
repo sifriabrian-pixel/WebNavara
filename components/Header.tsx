@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { WhatsappButton } from "@/components/WhatsappButton";
@@ -10,8 +13,25 @@ const navLinks = [
 ];
 
 export function Header() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 12);
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--navara-tan)]/30 bg-[var(--navara-cream)]/90 backdrop-blur">
+    <header
+      className={`sticky top-0 z-50 border-b bg-[var(--navara-cream)]/90 backdrop-blur transition-shadow duration-300 ${
+        scrolled
+          ? "border-[var(--navara-tan)]/40 shadow-sm"
+          : "border-[var(--navara-tan)]/30 shadow-none"
+      }`}
+    >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3 sm:px-8">
         <Link href="/" className="flex items-center gap-2">
           <Image
