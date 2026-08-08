@@ -105,10 +105,14 @@ export const faqs = [
   },
 ];
 
-// Slug del tratamiento que se muestra como card destacada en "Nuestros servicios".
-// Cambiá este valor (debe matchear un "slug" de content/tratamientos.ts) para
-// promocionar otro tratamiento sin tocar componentes.
-export const servicioDestacado = "tratamientos-faciales";
+// Slugs de los tratamientos que se muestran en "Los más elegidos" (home).
+// Deben matchear "slug" de content/tratamientos.ts. Orden = orden de aparición.
+export const destacados = [
+  "tratamientos-faciales",
+  "botox",
+  "acido-hialuronico",
+  "depilacion-laser",
+];
 
 export const activePromotion = {
   active: true,

@@ -5,10 +5,12 @@
 // Si un tratamiento todavía no tiene foto real, dejá "imagen" sin definir: la card
 // muestra automáticamente un bloque de color con el ícono de su categoría en su lugar.
 
+export type Categoria = "rostro" | "cuerpo" | "bienestar";
+
 export type Tratamiento = {
   slug: string;
   nombre: string;
-  categoria: "estetica" | "bienestar";
+  categoria: Categoria;
   descripcionCorta: string;
   descripcion: string;
   beneficios: string[];
@@ -21,7 +23,7 @@ export const tratamientos: Tratamiento[] = [
   {
     slug: "depilacion-laser",
     nombre: "Depilación láser",
-    categoria: "estetica",
+    categoria: "cuerpo",
     descripcionCorta:
       "Reducción progresiva del vello no deseado con tecnología láser.",
     descripcion:
@@ -37,7 +39,7 @@ export const tratamientos: Tratamiento[] = [
   {
     slug: "tratamientos-faciales",
     nombre: "Tratamientos faciales",
-    categoria: "estetica",
+    categoria: "rostro",
     descripcionCorta:
       "Cuidado facial personalizado para mejorar la textura, luminosidad y salud de tu piel.",
     descripcion:
@@ -53,7 +55,7 @@ export const tratamientos: Tratamiento[] = [
   {
     slug: "peeling",
     nombre: "Peeling",
-    categoria: "estetica",
+    categoria: "rostro",
     descripcionCorta:
       "Renovación de la piel para una textura más uniforme y luminosa.",
     descripcion:
@@ -69,7 +71,7 @@ export const tratamientos: Tratamiento[] = [
   {
     slug: "tratamientos-corporales",
     nombre: "Tratamientos corporales",
-    categoria: "estetica",
+    categoria: "cuerpo",
     descripcionCorta:
       "Tratamientos enfocados en firmeza, textura y bienestar corporal.",
     descripcion:
@@ -85,7 +87,7 @@ export const tratamientos: Tratamiento[] = [
   {
     slug: "botox",
     nombre: "Botox",
-    categoria: "estetica",
+    categoria: "rostro",
     descripcionCorta:
       "Tratamiento para suavizar líneas de expresión con resultado natural.",
     descripcion:
@@ -100,7 +102,7 @@ export const tratamientos: Tratamiento[] = [
   {
     slug: "acido-hialuronico",
     nombre: "Ácido hialurónico",
-    categoria: "estetica",
+    categoria: "rostro",
     descripcionCorta:
       "Relleno dérmico para recuperar volumen e hidratación de forma natural.",
     descripcion:
@@ -115,7 +117,7 @@ export const tratamientos: Tratamiento[] = [
   {
     slug: "ipl",
     nombre: "IPL",
-    categoria: "estetica",
+    categoria: "rostro",
     descripcionCorta:
       "Luz pulsada intensa para manchas, rojeces y fotoenvejecimiento.",
     descripcion:

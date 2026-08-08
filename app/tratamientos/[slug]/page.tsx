@@ -5,6 +5,12 @@ import { tratamientos, getTratamientoBySlug } from "@/content/tratamientos";
 import { business } from "@/content/site";
 import { WhatsappButton } from "@/components/WhatsappButton";
 
+const categoriaLabels = {
+  rostro: "Rostro",
+  cuerpo: "Cuerpo",
+  bienestar: "Bienestar",
+} as const;
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
@@ -39,7 +45,7 @@ export default async function TratamientoPage({ params }: Props) {
   return (
     <article className="mx-auto max-w-3xl px-5 py-16 sm:px-8 md:py-24">
       <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--navara-sage)]">
-        {tratamiento.categoria === "bienestar" ? "Bienestar" : "Estética"}
+        {categoriaLabels[tratamiento.categoria]}
       </p>
       <h1 className="mb-6 font-serif text-4xl text-[var(--navara-ink)]">
         {tratamiento.nombre}
@@ -74,7 +80,7 @@ export default async function TratamientoPage({ params }: Props) {
           Agendá tu consulta
         </WhatsappButton>
         <Link
-          href="/#servicios"
+          href="/tratamientos"
           className="text-sm font-medium text-[var(--navara-brown)] hover:underline"
         >
           Ver todos los tratamientos

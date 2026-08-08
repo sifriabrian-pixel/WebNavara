@@ -5,7 +5,7 @@ import { tratamientos } from "@/content/tratamientos";
 const BASE_URL = "https://www.navara.com.py";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/promociones", "/nosotros", "/contacto"].map(
+  const staticRoutes = ["", "/tratamientos", "/promociones", "/nosotros", "/contacto"].map(
     (path) => ({
       url: `${BASE_URL}${path}`,
       lastModified: new Date(),
