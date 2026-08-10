@@ -25,8 +25,6 @@ export type TeamMember = {
   fotoUrl?: string; // ruta en /public, ej. "/brand/equipo-alma-duarte.jpg". Sin foto real todavía: dejar undefined.
 };
 
-// Karen López todavía sin foto real (llega de la clínica) — fotoUrl queda
-// undefined y su card muestra el placeholder de silueta genérica hasta cargarla.
 export const team: TeamMember[] = [
   {
     nombre: "Dra. Alma Duarte",
@@ -40,6 +38,7 @@ export const team: TeamMember[] = [
     rol: "Técnico Superior en Estética Integral — Cosmiatra y Esteticista",
     descripcion:
       "Tratamientos faciales y corporales: acné, manchas y antiage. Masajes reductores, relajantes, descontracturantes, reflexología podal, entre otros.",
+    fotoUrl: "/brand/equipo-karen-lopez.jpg",
   },
   {
     nombre: "Sonia García",
