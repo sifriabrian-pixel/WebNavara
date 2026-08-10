@@ -27,7 +27,10 @@ const HERO_IMAGES = [
     src: "/brand/servicios-tratamiento.png",
     alt: "Especialista de Navara realizando un tratamiento estético",
   },
-  // Falta sumar la foto de pilates (3ra imagen) — pendiente de que se suba a Downloads.
+  {
+    src: "/brand/hero-pilates.jpg",
+    alt: "Paciente practicando pilates como parte del bienestar integral en Navara",
+  },
 ];
 
 const SLIDE_DURATION_MS = 7000;
