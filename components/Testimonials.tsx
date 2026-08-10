@@ -1,21 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { testimonials } from "@/content/site";
-import { fadeUpVariants } from "@/lib/motion";
-
-const AUTOPLAY_MS = 6500;
-
-function initialsOf(nombre: string) {
-  return nombre
-    .split(" ")
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((part) => part[0])
-    .join("")
-    .toUpperCase();
-}
+import { fadeUpStaggerVariants, fadeUpVariants } from "@/lib/motion";
 
 function Stars({ calificacion }: { calificacion: number }) {
   return (
@@ -32,17 +19,7 @@ function Stars({ calificacion }: { calificacion: number }) {
 export function Testimonials() {
   const reduced = !!useReducedMotion();
   const sectionVariants = fadeUpVariants(reduced);
-  const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const hasMultiple = testimonials.length > 1;
-
-  useEffect(() => {
-    if (!hasMultiple || paused) return;
-    const id = setInterval(() => {
-      setIndex((i) => (i + 1) % testimonials.length);
-    }, AUTOPLAY_MS);
-    return () => clearInterval(id);
-  }, [hasMultiple, paused]);
+  const cardVariants = fadeUpStaggerVariants(reduced);
 
   return (
     <motion.section
@@ -62,57 +39,26 @@ export function Testimonials() {
       </div>
 
       {testimonials.length > 0 ? (
-        <div
-          className="mx-auto max-w-2xl"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-        >
-          <div className="relative overflow-hidden rounded-2xl border border-[var(--navara-tan)]/30 bg-[var(--navara-cream)] p-8 sm:p-10">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: reduced ? 0 : 24 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: reduced ? 0 : -24 }}
-                transition={{ duration: reduced ? 0.2 : 0.45, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <Stars calificacion={testimonials[index].calificacion} />
-                <p className="mb-6 text-sm leading-relaxed text-[var(--navara-brown)]">
-                  &ldquo;{testimonials[index].texto}&rdquo;
-                </p>
-                <div className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--navara-terracotta)]/15 text-sm font-semibold text-[var(--navara-terracotta)]">
-                    {initialsOf(testimonials[index].nombre)}
-                  </span>
-                  <div>
-                    <p className="text-sm font-semibold text-[var(--navara-ink)]">
-                      {testimonials[index].nombre}
-                    </p>
-                    <p className="text-xs text-[var(--navara-brown)]">
-                      {testimonials[index].tratamiento}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {hasMultiple && (
-            <div className="mt-5 flex justify-center gap-2">
-              {testimonials.map((t, i) => (
-                <button
-                  key={t.nombre}
-                  aria-label={`Ver testimonio de ${t.nombre}`}
-                  onClick={() => setIndex(i)}
-                  className={`h-2 w-2 rounded-full transition-colors ${
-                    i === index
-                      ? "bg-[var(--navara-terracotta)]"
-                      : "bg-[var(--navara-tan)]/50"
-                  }`}
-                />
-              ))}
-            </div>
-          )}
+        <div className="grid gap-6 sm:grid-cols-3">
+          {testimonials.map((t, i) => (
+            <motion.div
+              key={t.nombre}
+              custom={i}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }}
+              className="rounded-2xl border border-[var(--navara-tan)]/30 bg-[var(--navara-cream)] p-6 shadow-sm"
+            >
+              <Stars calificacion={t.calificacion} />
+              <p className="mb-4 text-sm leading-relaxed text-[var(--navara-brown)]">
+                &ldquo;{t.texto}&rdquo;
+              </p>
+              <p className="text-sm font-semibold text-[var(--navara-ink)]">
+                {t.nombre}
+              </p>
+            </motion.div>
+          ))}
         </div>
       ) : (
         <div className="rounded-2xl border border-dashed border-[var(--navara-tan)]/50 bg-[var(--navara-beige)]/40 p-10 text-center">

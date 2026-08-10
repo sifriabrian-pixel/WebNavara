@@ -115,23 +115,45 @@ export const destacados = [
 
 export const activePromotion = {
   active: true,
-  title: "[PENDIENTE-CLIENTE] Promoción del mes",
-  description:
-    "[PENDIENTE-CLIENTE] Descripción de la promoción vigente, condiciones y vigencia.",
+  title: "Ritual Navara",
+  description: "Disfrutá de un día solo para vos.",
+  precio: "₲200.000",
+  items: [
+    "Una clase de pilates",
+    "Una limpieza facial",
+    "Un café de especialidad",
+  ],
   validUntil: "[PENDIENTE-CLIENTE]",
-  whatsappMessage: "Hola, quiero info sobre la promoción del mes",
+  whatsappMessage: "Hola, quiero info sobre el Ritual Navara",
 };
 
 export type Testimonio = {
   nombre: string;
-  tratamiento: string;
+  tratamiento?: string;
   texto: string;
   calificacion: number; // 1 a 5
-  fecha: string; // "YYYY-MM"
+  fecha?: string; // "YYYY-MM"
 };
 
-// Testimonios reales, cargados con consentimiento de la paciente.
+// Testimonios reales (reseñas públicas de Google). Sin foto ni fecha por
+// pedido del cliente — solo nombre, calificación y comentario.
 // Importante: no cargar acá testimonios de personas que trabajan en Navara
 // (ver "team" arriba) presentados como pacientes — es publicidad engañosa.
-// Para sumar uno nuevo, agregá otro objeto con la misma forma.
-export const testimonials: Testimonio[] = [];
+export const testimonials: Testimonio[] = [
+  {
+    nombre: "Ana Cardozo",
+    calificacion: 5,
+    texto: "Excelente atención! Recomiendo 100%",
+  },
+  {
+    nombre: "Giselle Rivas",
+    calificacion: 5,
+    texto:
+      "La atención bien personalizada, en horario programado y estuvieron predispuestos a brindarme toda la información que solicité acerca del tratamiento que me realicé.",
+  },
+  {
+    nombre: "Sirley Ortiz",
+    calificacion: 5,
+    texto: "Muy buen servicio",
+  },
+];

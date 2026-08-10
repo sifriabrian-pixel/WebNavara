@@ -28,9 +28,24 @@ export function PromoBanner() {
           <h3 className="mb-2 font-serif text-2xl text-[var(--navara-cream)]">
             {activePromotion.title}
           </h3>
-          <p className="max-w-lg text-sm leading-relaxed text-[var(--navara-cream)]/80">
+          <p className="mb-1 text-sm leading-relaxed text-[var(--navara-cream)]/80">
             {activePromotion.description}
           </p>
+          {activePromotion.precio && (
+            <p className="mb-3 font-serif text-xl text-[var(--navara-mustard)]">
+              {activePromotion.precio}
+            </p>
+          )}
+          {activePromotion.items && activePromotion.items.length > 0 && (
+            <ul className="mb-2 space-y-1 text-sm text-[var(--navara-cream)]/80">
+              {activePromotion.items.map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[var(--navara-mustard)]" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          )}
           {activePromotion.validUntil && (
             <p className="mt-2 text-xs text-[var(--navara-cream)]/50">
               Vigencia: {activePromotion.validUntil}

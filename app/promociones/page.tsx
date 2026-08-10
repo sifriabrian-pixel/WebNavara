@@ -22,9 +22,24 @@ export default function PromocionesPage() {
           <h2 className="mb-3 font-serif text-2xl text-[var(--navara-ink)]">
             {activePromotion.title}
           </h2>
-          <p className="mb-4 text-sm leading-relaxed text-[var(--navara-brown)]">
+          <p className="mb-1 text-sm leading-relaxed text-[var(--navara-brown)]">
             {activePromotion.description}
           </p>
+          {activePromotion.precio && (
+            <p className="mb-3 font-serif text-2xl text-[var(--navara-terracotta)]">
+              {activePromotion.precio}
+            </p>
+          )}
+          {activePromotion.items && activePromotion.items.length > 0 && (
+            <ul className="mb-4 space-y-1.5 text-sm text-[var(--navara-brown)]">
+              {activePromotion.items.map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[var(--navara-terracotta)]" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          )}
           {activePromotion.validUntil && (
             <p className="mb-6 text-xs text-[var(--navara-brown)]/70">
               Vigencia: {activePromotion.validUntil}
