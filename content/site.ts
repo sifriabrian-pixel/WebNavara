@@ -49,18 +49,11 @@ export const team: TeamMember[] = [
   },
 ];
 
-export type TrustStat = {
-  value: number | null; // null = todavía sin confirmar por el cliente (se muestra como placeholder, sin animar)
-  suffix?: string; // ej. "+"
-  label: string;
-};
-
-// Cuando el cliente confirme un número real, cambiá `value` de null al número:
-// la stats bar lo anima contando hacia arriba automáticamente al entrar en pantalla.
-export const trustStats: TrustStat[] = [
-  { value: null, suffix: "+", label: "años de trayectoria" },
-  { value: null, suffix: "+", label: "tratamientos realizados" },
-  { value: null, label: "certificación profesional" },
+// 3 features fijos (sin datos numéricos verificables) — formato ícono + texto.
+export const trustFeatures = [
+  "+8 tratamientos diferentes",
+  "Equipo certificado",
+  "Ambiente cómodo y profesional",
 ];
 
 export const pillars = [

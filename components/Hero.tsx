@@ -12,8 +12,7 @@ import {
 } from "framer-motion";
 import { WhatsappButton } from "@/components/WhatsappButton";
 import { fadeUpVariants } from "@/lib/motion";
-import { business, trustStats } from "@/content/site";
-import { AnimatedCounter } from "@/components/AnimatedCounter";
+import { business } from "@/content/site";
 
 // Rotan de fondo con crossfade + zoom lento continuo (efecto Ken Burns).
 // Todas son fotos reales ya aprobadas para el sitio, sin repetir las que
@@ -44,7 +43,6 @@ export function Hero() {
   });
   const parallaxY = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : 50]);
   const variants = fadeUpVariants(reduced);
-  const tratamientosStat = trustStats.find((s) => s.label === "tratamientos realizados");
 
   const [imageIndex, setImageIndex] = useState(0);
 
@@ -137,17 +135,7 @@ export function Hero() {
             animate="visible"
             className="flex flex-wrap items-center gap-4 text-sm text-[var(--navara-brown)]"
           >
-            {tratamientosStat?.value ? (
-              <span>
-                <AnimatedCounter
-                  value={tratamientosStat.value}
-                  suffix={tratamientosStat.suffix}
-                />{" "}
-                pacientes atendidas
-              </span>
-            ) : (
-              <span>Atención personalizada, sin apuros</span>
-            )}
+            <span>Atención personalizada, sin apuros</span>
             <span className="h-4 w-px bg-[var(--navara-ink)]/20" />
             <span>{business.city}, Paraguay</span>
           </motion.div>

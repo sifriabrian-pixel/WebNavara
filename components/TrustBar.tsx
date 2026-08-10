@@ -1,41 +1,39 @@
 "use client";
 
+import { Armchair, BadgeCheck, LayoutGrid } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
-import { trustStats } from "@/content/site";
-import { AnimatedCounter } from "@/components/AnimatedCounter";
-import { fadeUpVariants } from "@/lib/motion";
+import { trustFeatures } from "@/content/site";
+import { fadeUpStaggerVariants } from "@/lib/motion";
+
+// Un ícono por feature, en el mismo orden que "trustFeatures" en content/site.ts.
+const featureIcons = [LayoutGrid, BadgeCheck, Armchair];
 
 export function TrustBar() {
   const reduced = !!useReducedMotion();
-  const variants = fadeUpVariants(reduced);
+  const variants = fadeUpStaggerVariants(reduced);
 
   return (
     <section className="border-y border-[var(--navara-tan)]/30 bg-[var(--navara-beige)]">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-10 gap-y-3 px-5 py-6 text-center sm:px-8">
-        {trustStats.map((stat, i) => (
-          <motion.div
-            key={stat.label}
-            custom={i}
-            variants={variants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-40px" }}
-            className="flex flex-col items-center"
-          >
-            {stat.value !== null ? (
-              <span className="font-serif text-2xl text-[var(--navara-ink)]">
-                <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+      <div className="mx-auto flex max-w-6xl flex-wrap items-start justify-center gap-x-14 gap-y-6 px-5 py-8 text-center sm:px-8">
+        {trustFeatures.map((label, i) => {
+          const Icon = featureIcons[i] ?? LayoutGrid;
+          return (
+            <motion.div
+              key={label}
+              custom={i}
+              variants={variants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              className="flex w-32 flex-col items-center gap-2"
+            >
+              <Icon strokeWidth={1.25} className="h-6 w-6 text-[var(--navara-brown)]" />
+              <span className="text-sm font-medium text-[var(--navara-brown)]">
+                {label}
               </span>
-            ) : (
-              <span className="font-serif text-2xl text-[var(--navara-ink)]/40">
-                [PENDIENTE-CLIENTE]
-              </span>
-            )}
-            <span className="text-xs font-medium tracking-wide text-[var(--navara-brown)]">
-              {stat.label}
-            </span>
-          </motion.div>
-        ))}
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );
