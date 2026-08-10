@@ -6,7 +6,7 @@ export const business = {
   fullName: "Navara Estética Avanzada y Bienestar Integral",
   tagline: "Belleza que conecta. Bienestar que transforma.",
   whatsappNumber: "595983734292",
-  city: "Asunción",
+  city: "Fernando de la Mora",
   address: "Teniente Cabrera Ruiz 451, Francis Morice",
   mapsQuery: "Teniente Cabrera Ruiz 451, Francis Morice, Asunción, Paraguay",
   hours: "[PENDIENTE-CLIENTE]",
