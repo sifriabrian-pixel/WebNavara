@@ -13,7 +13,7 @@ export function PromoBanner() {
   if (!activePromotion.active) return null;
 
   return (
-    <section className="mx-auto max-w-4xl px-5 sm:px-8">
+    <section className="mx-auto max-w-3xl px-5 sm:px-8">
       <motion.div
         initial="hidden"
         whileInView="visible"

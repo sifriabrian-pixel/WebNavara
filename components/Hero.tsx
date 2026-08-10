@@ -24,13 +24,10 @@ const HERO_IMAGES = [
     alt: "Paciente con piel radiante y saludable, resultado de tratamientos Navara",
   },
   {
-    src: "/brand/hero-portrait.png",
-    alt: "Momento de cuidado y bienestar en Navara",
-  },
-  {
     src: "/brand/servicios-tratamiento.png",
     alt: "Especialista de Navara realizando un tratamiento estético",
   },
+  // Falta sumar la foto de pilates (3ra imagen) — pendiente de que se suba a Downloads.
 ];
 
 const SLIDE_DURATION_MS = 7000;
