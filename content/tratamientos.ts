@@ -98,6 +98,7 @@ export const tratamientos: Tratamiento[] = [
       "Aplicación planificada en consulta previa",
     ],
     whatsappMensaje: "Hola, quiero info sobre Botox",
+    imagen: "/brand/servicio-botox.png",
   },
   {
     slug: "acido-hialuronico",
@@ -113,6 +114,7 @@ export const tratamientos: Tratamiento[] = [
       "Técnica personalizada según la zona",
     ],
     whatsappMensaje: "Hola, quiero info sobre Ácido hialurónico",
+    imagen: "/brand/servicio-acido-hialuronico.png",
   },
   {
     slug: "ipl",
