@@ -13,15 +13,15 @@ export function PromoBanner() {
   if (!activePromotion.active) return null;
 
   return (
-    <section className="mx-auto max-w-3xl px-5 sm:px-8">
+    <section className="mx-auto max-w-4xl px-5 sm:px-8">
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-80px" }}
         variants={variants}
-        className="flex flex-col items-start gap-6 rounded-3xl bg-[var(--navara-ink)] p-8 sm:p-10"
+        className="flex flex-col items-start gap-6 rounded-3xl bg-[var(--navara-ink)] p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10"
       >
-        <div>
+        <div className="sm:max-w-sm">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--navara-mustard)]">
             Promoción activa
           </p>
@@ -52,7 +52,7 @@ export function PromoBanner() {
             </p>
           )}
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex shrink-0 flex-col gap-2 sm:items-end">
           <WhatsappButton
             message={activePromotion.whatsappMessage}
             source="promo-banner"

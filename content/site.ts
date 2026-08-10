@@ -123,7 +123,7 @@ export const activePromotion = {
     "Una limpieza facial",
     "Un café de especialidad",
   ],
-  validUntil: "[PENDIENTE-CLIENTE]",
+  validUntil: "Hasta el 30 de septiembre",
   whatsappMessage: "Hola, quiero info sobre el Ritual Navara",
 };
 
