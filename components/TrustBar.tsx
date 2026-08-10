@@ -14,7 +14,7 @@ export function TrustBar() {
 
   return (
     <section className="border-y border-[var(--navara-tan)]/30 bg-[var(--navara-beige)]">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-start justify-center gap-x-14 gap-y-6 px-5 py-8 text-center sm:px-8">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-start justify-center gap-x-10 gap-y-6 px-5 py-10 text-center sm:gap-x-24 sm:px-8 sm:py-14">
         {trustFeatures.map((label, i) => {
           const Icon = featureIcons[i] ?? LayoutGrid;
           return (

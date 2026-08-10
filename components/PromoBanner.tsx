@@ -19,7 +19,7 @@ export function PromoBanner() {
         whileInView="visible"
         viewport={{ once: true, margin: "-80px" }}
         variants={variants}
-        className="flex flex-col items-start gap-6 rounded-3xl bg-[var(--navara-ink)] p-8 sm:flex-row sm:items-stretch sm:p-10"
+        className="flex flex-col items-start gap-6 rounded-3xl bg-[var(--navara-ink)] p-8 sm:flex-row sm:items-center sm:p-10"
       >
         <div>
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--navara-mustard)]">
@@ -52,7 +52,7 @@ export function PromoBanner() {
             </p>
           )}
         </div>
-        <div className="flex shrink-0 flex-col gap-2 sm:justify-between sm:pt-6">
+        <div className="flex shrink-0 flex-col items-start gap-2">
           <WhatsappButton
             message={activePromotion.whatsappMessage}
             source="promo-banner"
