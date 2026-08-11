@@ -13,7 +13,10 @@ export function PromoBanner() {
   if (!activePromotion.active) return null;
 
   return (
-    <section className="mx-auto max-w-3xl px-5 sm:px-8">
+    <section
+      id="promocion"
+      className="mx-auto max-w-3xl scroll-mt-24 px-5 sm:px-8"
+    >
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -61,7 +64,7 @@ export function PromoBanner() {
               Quiero esta promo
             </WhatsappButton>
             <Link
-              href="/promociones"
+              href="/#promocion"
               className="text-xs font-medium text-[var(--navara-cream)]/70 hover:text-[var(--navara-cream)] hover:underline"
             >
               Ver todas las promociones

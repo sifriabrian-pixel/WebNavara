@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { FacebookIcon, InstagramIcon } from "@/components/icons/SocialIcons";
 import { business } from "@/content/site";
@@ -55,20 +54,24 @@ export function Footer() {
             Chatear por WhatsApp
           </WhatsappButton>
           <div className="flex gap-4 text-[var(--navara-brown)]">
-            <Link
-              href="/"
+            <a
+              href={business.social.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Instagram de Navara"
               className="transition-colors hover:text-[var(--navara-terracotta)]"
             >
               <InstagramIcon className="h-5 w-5" />
-            </Link>
-            <Link
-              href="/"
+            </a>
+            <a
+              href={business.social.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Facebook de Navara"
               className="transition-colors hover:text-[var(--navara-terracotta)]"
             >
               <FacebookIcon className="h-5 w-5" />
-            </Link>
+            </a>
           </div>
         </div>
       </motion.div>

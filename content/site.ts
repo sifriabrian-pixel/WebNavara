@@ -11,8 +11,8 @@ export const business = {
   mapsQuery: "Teniente Cabrera Ruiz 451, Francis Morice, Asunción, Paraguay",
   hours: "[PENDIENTE-CLIENTE]",
   social: {
-    instagram: "[PENDIENTE-CLIENTE]",
-    facebook: "[PENDIENTE-CLIENTE]",
+    instagram: "https://www.instagram.com/navaraclinic",
+    facebook: "https://www.facebook.com/profile.php?id=61587256786468",
   },
   metaPixelId: "", // Pegá el Pixel ID acá cuando lo tengas. Vacío = no se carga el pixel.
   ga4Id: "", // Pegá el Measurement ID de GA4 (formato G-XXXXXXX) cuando lo tengas.
