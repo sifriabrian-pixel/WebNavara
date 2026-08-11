@@ -6,6 +6,7 @@ import { FacebookIcon, InstagramIcon } from "@/components/icons/SocialIcons";
 import { business } from "@/content/site";
 import { WhatsappButton } from "@/components/WhatsappButton";
 import { MapEmbed } from "@/components/MapEmbed";
+import { formatWhatsappNumber } from "@/lib/whatsapp";
 import { fadeUpVariants } from "@/lib/motion";
 
 export function Footer() {
@@ -53,6 +54,12 @@ export function Footer() {
           <WhatsappButton message="Hola, quiero info sobre Navara" source="footer">
             Chatear por WhatsApp
           </WhatsappButton>
+          <a
+            href={`tel:+${business.whatsappNumber}`}
+            className="text-sm text-[var(--navara-brown)] transition-colors hover:text-[var(--navara-terracotta)]"
+          >
+            {formatWhatsappNumber()}
+          </a>
           <div className="flex gap-4 text-[var(--navara-brown)]">
             <a
               href={business.social.instagram}

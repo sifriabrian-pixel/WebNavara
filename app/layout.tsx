@@ -3,6 +3,7 @@ import { Playfair_Display, Montserrat } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { FloatingWhatsapp } from "@/components/FloatingWhatsapp";
 import { TrackingScripts } from "@/components/TrackingScripts";
 import { business } from "@/content/site";
 
@@ -67,6 +68,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <FloatingWhatsapp />
       </body>
     </html>
   );

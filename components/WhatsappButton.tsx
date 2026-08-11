@@ -1,14 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { buildWhatsappLink } from "@/lib/whatsapp";
-
-declare global {
-  interface Window {
-    fbq?: (...args: unknown[]) => void;
-    gtag?: (...args: unknown[]) => void;
-  }
-}
+import { buildWhatsappLink, trackWhatsappClick } from "@/lib/whatsapp";
 
 type WhatsappButtonProps = {
   message: string;
@@ -28,15 +21,6 @@ export function WhatsappButton({
   const reduced = !!useReducedMotion();
   const href = buildWhatsappLink(message);
 
-  function handleClick() {
-    if (typeof window.fbq === "function") {
-      window.fbq("track", "Contact", { content_name: source });
-    }
-    if (typeof window.gtag === "function") {
-      window.gtag("event", "WhatsAppClick", { section: source });
-    }
-  }
-
   const base =
     "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-colors duration-200";
   const styles =
@@ -49,7 +33,7 @@ export function WhatsappButton({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={handleClick}
+      onClick={() => trackWhatsappClick(source)}
       data-whatsapp-source={source}
       whileHover={reduced ? undefined : { scale: 1.03 }}
       whileTap={reduced ? undefined : { scale: 0.97 }}
