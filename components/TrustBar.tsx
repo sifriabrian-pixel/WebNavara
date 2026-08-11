@@ -14,7 +14,7 @@ export function TrustBar() {
 
   return (
     <section className="border-y border-[var(--navara-tan)]/30 bg-[var(--navara-beige)]">
-      <div className="mx-auto flex max-w-7xl flex-wrap items-start justify-center gap-x-10 gap-y-6 px-5 py-10 text-center sm:gap-x-24 sm:px-8 sm:py-14">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-start justify-center gap-x-12 gap-y-6 px-5 py-5 text-center sm:gap-x-32 sm:px-8 sm:py-6">
         {trustFeatures.map((label, i) => {
           const Icon = featureIcons[i] ?? LayoutGrid;
           return (
@@ -25,7 +25,7 @@ export function TrustBar() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-40px" }}
-              className="flex w-32 flex-col items-center gap-2"
+              className="flex w-36 flex-col items-center gap-2 sm:w-44"
             >
               <Icon strokeWidth={1.25} className="h-6 w-6 text-[var(--navara-brown)]" />
               <span className="text-sm font-medium text-[var(--navara-brown)]">
