@@ -6,9 +6,19 @@ export type CategoriaInfo = {
   descripcion: string;
   imagen?: string; // ruta en /public. Si no se define, se usa la foto del primer tratamiento de la categoría.
   tratamientoSlugs: string[]; // referencia por slug a content/tratamientos.ts — no duplica data.
+  tags?: string[]; // texto sutil debajo de la descripción. Si no se define, se arma solo con los nombres de tratamientoSlugs.
 };
 
 export const categorias: CategoriaInfo[] = [
+  {
+    slug: "intimo",
+    nombre: "Rejuvenecimiento Íntimo",
+    descripcion:
+      "Tratamientos no invasivos orientados a bienestar, firmeza y salud íntima femenina, en un espacio privado y confidencial.",
+    imagen: "/brand/categoria-intimo.png",
+    tratamientoSlugs: ["rejuvenecimiento-intimo"],
+    tags: ["Rejuvenecimiento íntimo", "Consulta confidencial", "Atención personalizada"],
+  },
   {
     slug: "rostro",
     nombre: "Rostro",

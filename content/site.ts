@@ -7,8 +7,8 @@ export const business = {
   tagline: "Belleza que conecta. Bienestar que transforma.",
   whatsappNumber: "595983734292",
   city: "Fernando de la Mora",
-  address: "Teniente Cabrera Ruiz 451, Francis Morice",
-  mapsQuery: "Teniente Cabrera Ruiz 451, Francis Morice, Asunción, Paraguay",
+  address: "Calle India 1342 casi Waldino Lovera",
+  mapsQuery: "Calle India 1342 casi Waldino Lovera, Fernando de la Mora, Paraguay",
   hours: "[PENDIENTE-CLIENTE]",
   social: {
     instagram: "https://www.instagram.com/navaraclinic",

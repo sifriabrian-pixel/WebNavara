@@ -19,8 +19,13 @@ export function CategoriasEditorial() {
             .map((slug) => tratamientos.find((t) => t.slug === slug))
             .filter((t): t is NonNullable<typeof t> => !!t);
           const imagen = categoria.imagen ?? items.find((t) => t.imagen)?.imagen;
+          const tagsList = categoria.tags ?? items.map((t) => t.nombre);
           const reversed = i % 2 === 1;
           const destacada = i === 0;
+          const singleTreatment = items.length === 1;
+          const exploreHref = singleTreatment
+            ? `/tratamientos/${items[0].slug}`
+            : `/tratamientos#${categoria.slug}`;
 
           return (
             <motion.div
@@ -60,13 +65,13 @@ export function CategoriasEditorial() {
                   {categoria.descripcion}
                 </p>
                 <p className="mb-8 text-sm text-[var(--navara-brown)]/70">
-                  {items.map((t) => t.nombre).join(" · ")}
+                  {tagsList.join(" · ")}
                 </p>
                 <Link
-                  href={`/tratamientos#${categoria.slug}`}
+                  href={exploreHref}
                   className="group/link relative text-sm font-semibold text-[var(--navara-terracotta)]"
                 >
-                  Explorar tratamientos →
+                  Explorar {singleTreatment ? "tratamiento" : "tratamientos"} →
                   <span className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-[var(--navara-terracotta)] transition-transform duration-[250ms] group-hover/link:scale-x-100" />
                 </Link>
               </div>

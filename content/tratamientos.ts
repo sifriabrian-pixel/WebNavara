@@ -5,7 +5,7 @@
 // Si un tratamiento todavía no tiene foto real, dejá "imagen" sin definir: la card
 // muestra automáticamente un bloque de color con el ícono de su categoría en su lugar.
 
-export type Categoria = "rostro" | "cuerpo" | "bienestar";
+export type Categoria = "intimo" | "rostro" | "cuerpo" | "bienestar";
 
 export type Tratamiento = {
   slug: string;
@@ -20,6 +20,19 @@ export type Tratamiento = {
 };
 
 export const tratamientos: Tratamiento[] = [
+  {
+    slug: "rejuvenecimiento-intimo",
+    nombre: "Rejuvenecimiento íntimo",
+    categoria: "intimo",
+    descripcionCorta:
+      "Tratamientos no invasivos orientados a bienestar, firmeza y salud íntima femenina.",
+    descripcion:
+      "Tratamientos no invasivos orientados a bienestar, firmeza y salud íntima femenina, en un espacio privado y confidencial.",
+    beneficios: ["Consulta confidencial", "Atención personalizada"],
+    // [PENDIENTE] Descripción, beneficios y precio se van a desarrollar con
+    // más detalle más adelante — por ahora usa el copy que definió el cliente.
+    whatsappMensaje: "Hola, quiero info sobre Rejuvenecimiento íntimo",
+  },
   {
     slug: "depilacion-laser",
     nombre: "Depilación láser",

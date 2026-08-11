@@ -6,6 +6,7 @@ import { business } from "@/content/site";
 import { WhatsappButton } from "@/components/WhatsappButton";
 
 const categoriaLabels = {
+  intimo: "Íntimo",
   rostro: "Rostro",
   cuerpo: "Cuerpo",
   bienestar: "Bienestar",
