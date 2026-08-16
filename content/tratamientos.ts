@@ -7,16 +7,39 @@
 
 export type Categoria = "intimo" | "rostro" | "cuerpo" | "bienestar";
 
+export type FaqItem = {
+  pregunta: string;
+  respuesta: string;
+};
+
+export type Modalidad = {
+  nombre: string;
+  descripcion: string;
+};
+
 export type Tratamiento = {
   slug: string;
   nombre: string;
   categoria: Categoria;
-  descripcionCorta: string;
-  descripcion: string;
+  descripcionCorta: string; // usado en cards (home, catálogo) y como intro del hero
+  descripcion: string; // párrafo corto, debajo del hero
   beneficios: string[];
-  precioDesde?: string; // ej. "Desde ₲350.000" — dejar undefined si no hay precio público
+  precioDesde?: string; // ej. "Desde ₲350.000" — dejar undefined si no hay precio público (regla: ningún tratamiento publica precio)
   whatsappMensaje: string;
   imagen?: string; // ruta en /public, ej. "/brand/servicios-tratamiento.png"
+
+  // Campos de la landing rica (todos opcionales — si faltan, esa sección
+  // simplemente no se renderiza, así un tratamiento sin completar no rompe nada).
+  queEs?: string; // sección "Qué es"
+  modalidades?: Modalidad[]; // sub-variantes dentro del mismo tratamiento (ej. Masajes)
+  proceso?: string; // cantidad de sesiones / frecuencia
+  duracionSesion?: string;
+  recuperacion?: string;
+  primerosResultados?: string;
+  mantenimiento?: string;
+  contraindicaciones?: string[];
+  diferencialNavara?: string;
+  faq?: FaqItem[];
 };
 
 export const tratamientos: Tratamiento[] = [
@@ -102,16 +125,49 @@ export const tratamientos: Tratamiento[] = [
     nombre: "Botox",
     categoria: "rostro",
     descripcionCorta:
-      "Tratamiento para suavizar líneas de expresión con resultado natural.",
+      "Tratamiento con proteína purificada que ayuda a suavizar las arrugas del rostro.",
     descripcion:
       "La toxina botulínica ayuda a suavizar líneas de expresión en zonas como frente, entrecejo y contorno de ojos, con un resultado natural que respeta el movimiento del rostro. Cada aplicación se planifica en una consulta previa.",
     beneficios: [
-      "Suaviza líneas de expresión",
-      "Resultado natural, sin perder movimiento",
-      "Aplicación planificada en consulta previa",
+      "Relaja temporalmente los músculos tratados",
+      "Suaviza y previene arrugas",
+      "Sin cirugía, resultado rápido",
     ],
     whatsappMensaje: "Hola, quiero info sobre Botox",
     imagen: "/brand/servicio-botox.png",
+    queEs:
+      "Suaviza arrugas ya formadas y previene nuevas líneas de expresión en frente, entrecejo y patas de gallo.",
+    proceso: "Una sola sesión de aplicación.",
+    duracionSesion: "15 a 30 minutos.",
+    recuperacion: "Sin baja médica, reincorporación inmediata a la rutina.",
+    primerosResultados:
+      "Iniciales entre 3 y 5 días, efecto total a los 14 días. Dura de 3 a 6 meses.",
+    mantenimiento: "2 a 3 veces al año (cada 4 a 6 meses).",
+    contraindicaciones: [
+      "Alergia a la toxina",
+      "Embarazo o lactancia",
+      "Enfermedades neuromusculares",
+      "Infección activa en la zona a tratar",
+    ],
+    diferencialNavara:
+      "Personal médico certificado en medicina estética, consultorio dentro de normas de salubridad.",
+    faq: [
+      {
+        pregunta: "¿Duele el pinchazo?",
+        respuesta:
+          "Se usan agujas muy finas, la molestia es mínima y breve.",
+      },
+      {
+        pregunta: "¿Se va a notar?",
+        respuesta:
+          "No se nota un \"arreglo\" — solo un aspecto más descansado.",
+      },
+      {
+        pregunta: "¿Qué pasa si no vuelvo a aplicarme?",
+        respuesta:
+          "Las arrugas vuelven a su estado natural, sin empeorar.",
+      },
+    ],
   },
   {
     slug: "acido-hialuronico",
