@@ -27,6 +27,7 @@ export const categorias: CategoriaInfo[] = [
     tratamientoSlugs: [
       "tratamientos-faciales",
       "peeling",
+      "dermaplaning",
       "ipl",
       "botox",
       "acido-hialuronico",
