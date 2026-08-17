@@ -3,10 +3,6 @@ import { notFound } from "next/navigation";
 import { tratamientos, getTratamientoBySlug } from "@/content/tratamientos";
 import { business } from "@/content/site";
 import { TreatmentLandingLayout } from "@/components/TreatmentLandingLayout";
-import { IntimoTreatmentLanding } from "@/components/IntimoTreatmentLanding";
-
-// Piloto de rediseño — solo esta página por ahora, ver si se replica al resto.
-const PILOT_SLUGS = new Set(["rejuvenecimiento-intimo"]);
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -38,10 +34,6 @@ export default async function TratamientoPage({ params }: Props) {
   const tratamiento = getTratamientoBySlug(slug);
 
   if (!tratamiento) notFound();
-
-  if (PILOT_SLUGS.has(tratamiento.slug)) {
-    return <IntimoTreatmentLanding tratamiento={tratamiento} />;
-  }
 
   return <TreatmentLandingLayout tratamiento={tratamiento} />;
 }

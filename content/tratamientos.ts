@@ -59,6 +59,7 @@ export const tratamientos: Tratamiento[] = [
       "Aumenta la firmeza de los tejidos",
     ],
     whatsappMensaje: "Hola, quiero info sobre Rejuvenecimiento íntimo",
+    imagen: "/brand/categoria-intimo.png",
     queEs:
       "Busca atender molestias físicas causadas por el envejecimiento, molestias de partos o la menopausia, más allá de un objetivo puramente estético.",
     diferencialNavara:
