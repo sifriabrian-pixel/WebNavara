@@ -48,11 +48,21 @@ export const tratamientos: Tratamiento[] = [
     nombre: "Rejuvenecimiento íntimo",
     categoria: "intimo",
     descripcionCorta:
-      "Tratamientos no invasivos orientados a bienestar, firmeza y salud íntima femenina.",
+      "Tratamientos médicos y estéticos diseñados para devolver la salud, elasticidad, hidratación y funcionalidad a la zona genital femenina.",
     descripcion:
-      "Tratamientos no invasivos orientados a bienestar, firmeza y salud íntima femenina, en un espacio privado y confidencial.",
-    beneficios: ["Consulta confidencial", "Atención personalizada"],
+      "Tratamientos médicos y estéticos diseñados para devolver la salud, elasticidad, hidratación y funcionalidad a la zona genital femenina.",
+    beneficios: [
+      "Estimula el colágeno natural",
+      "Alivia la sequedad",
+      "Disminuye el dolor en las relaciones sexuales",
+      "Ayuda con la incontinencia urinaria leve",
+      "Aumenta la firmeza de los tejidos",
+    ],
     whatsappMensaje: "Hola, quiero info sobre Rejuvenecimiento íntimo",
+    queEs:
+      "Busca atender molestias físicas causadas por el envejecimiento, molestias de partos o la menopausia, más allá de un objetivo puramente estético.",
+    diferencialNavara:
+      "Personal médico certificado en medicina estética, con un consultorio destinado a este tratamiento dentro de las normas de salubridad.",
     proceso: "2 a 3 sesiones iniciales, espaciadas cada 4 a 6 semanas.",
     duracionSesion: "15 a 30 minutos.",
     recuperacion:

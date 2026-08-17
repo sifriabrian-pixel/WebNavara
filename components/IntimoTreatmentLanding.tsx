@@ -41,7 +41,24 @@ export function IntimoTreatmentLanding({ tratamiento }: { tratamiento: Tratamien
   // Bloques entre el Hero y el CTA final. Se arman como lista para que el
   // fondo crema/beige alterne siempre bien, sin importar qué secciones
   // opcionales terminen renderizando (ej. si falta "Por qué Navara").
-  const blocks: Block[] = [
+  const blocks: Block[] = [];
+
+  if (tratamiento.queEs) {
+    blocks.push({
+      type: "section",
+      key: "que-es",
+      content: (
+        <>
+          <SectionHeading>Qué es</SectionHeading>
+          <p className="text-base leading-relaxed text-[var(--navara-brown)]">
+            {tratamiento.queEs}
+          </p>
+        </>
+      ),
+    });
+  }
+
+  blocks.push(
     {
       type: "section",
       key: "beneficios",
@@ -53,7 +70,7 @@ export function IntimoTreatmentLanding({ tratamiento }: { tratamiento: Tratamien
       ),
     },
     { type: "section", key: "stats", content: <StatStrip stats={STAT_STRIP} /> },
-  ];
+  );
 
   if (steps.length > 0) {
     blocks.push({
