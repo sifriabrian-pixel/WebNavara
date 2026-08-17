@@ -15,7 +15,7 @@ const categoriaLabels = {
   bienestar: "Bienestar",
 } as const;
 
-function Section({
+export function Section({
   children,
   className = "",
 }: {
@@ -38,7 +38,7 @@ function Section({
   );
 }
 
-function SectionHeading({ children }: { children: React.ReactNode }) {
+export function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
     <h2 className="mb-5 font-serif text-2xl text-[var(--navara-ink)] sm:text-3xl">
       {children}
@@ -46,7 +46,7 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
   );
 }
 
-function FaqAccordion({ items }: { items: NonNullable<Tratamiento["faq"]> }) {
+export function FaqAccordion({ items }: { items: NonNullable<Tratamiento["faq"]> }) {
   const reduced = !!useReducedMotion();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
