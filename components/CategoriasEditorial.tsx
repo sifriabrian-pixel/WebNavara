@@ -19,7 +19,6 @@ export function CategoriasEditorial() {
             .map((slug) => tratamientos.find((t) => t.slug === slug))
             .filter((t): t is NonNullable<typeof t> => !!t);
           const imagen = categoria.imagen ?? items.find((t) => t.imagen)?.imagen;
-          const tagsList = categoria.tags ?? items.map((t) => t.nombre);
           const reversed = i % 2 === 1;
           const destacada = i === 0;
           const singleTreatment = items.length === 1;
@@ -64,9 +63,25 @@ export function CategoriasEditorial() {
                 <p className="mb-6 max-w-md text-base leading-relaxed text-[var(--navara-brown)]">
                   {categoria.descripcion}
                 </p>
-                <p className="mb-8 text-sm text-[var(--navara-brown)]/70">
-                  {tagsList.join(" · ")}
-                </p>
+                {categoria.tags ? (
+                  <p className="mb-8 text-sm text-[var(--navara-brown)]/70">
+                    {categoria.tags.join(" · ")}
+                  </p>
+                ) : (
+                  <p className="mb-8 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-[var(--navara-brown)]/70">
+                    {items.map((t, idx) => (
+                      <span key={t.slug} className="flex items-center gap-1.5">
+                        <Link
+                          href={`/tratamientos/${t.slug}`}
+                          className="underline-offset-2 hover:text-[var(--navara-terracotta)] hover:underline"
+                        >
+                          {t.nombre}
+                        </Link>
+                        {idx < items.length - 1 && <span aria-hidden="true">·</span>}
+                      </span>
+                    ))}
+                  </p>
+                )}
                 <Link
                   href={exploreHref}
                   className="group/link relative text-sm font-semibold text-[var(--navara-terracotta)]"

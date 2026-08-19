@@ -9,7 +9,7 @@ export const business = {
   city: "Fernando de la Mora",
   address: "Calle India 1342 casi Waldino Lovera",
   mapsQuery: "Calle India 1342 casi Waldino Lovera, Fernando de la Mora, Paraguay",
-  hours: "Lunes a viernes de 10 a 19hs, sábados de 8 a 13hs",
+  hours: "Lunes a viernes de 8 a 20hs, sábados de 8 a 13hs",
   social: {
     instagram: "https://www.instagram.com/navaraclinic",
     facebook: "https://www.facebook.com/profile.php?id=61587256786468",
