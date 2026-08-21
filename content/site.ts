@@ -106,19 +106,136 @@ export const destacados = [
   "depilacion-laser",
 ];
 
-export const activePromotion = {
-  active: true,
-  title: "Ritual Navara",
-  description: "Disfrutá de un día solo para vos.",
-  precio: "₲200.000",
-  items: [
-    "Una clase de pilates",
-    "Una limpieza facial",
-    "Un café de especialidad",
-  ],
-  validUntil: "Hasta el 30 de septiembre",
-  whatsappMessage: "Hola, quiero info sobre el Ritual Navara",
+export type Promotion = {
+  slug: string;
+  title: string;
+  description: string;
+  precio?: string;
+  items?: string[];
+  validUntil?: string; // dejar sin definir si no hay fecha de corte confirmada
+  whatsappMessage: string;
 };
+
+// La primera promo de la lista es la que se destaca en el banner del home.
+export const promotions: Promotion[] = [
+  {
+    slug: "ritual-navara",
+    title: "Ritual Navara",
+    description: "Disfrutá de un día solo para vos.",
+    precio: "₲200.000",
+    items: [
+      "Una clase de pilates",
+      "Una limpieza facial",
+      "Un café de especialidad",
+    ],
+    validUntil: "Hasta el 30 de septiembre",
+    whatsappMessage: "Hola, quiero info sobre el Ritual Navara",
+  },
+  {
+    slug: "plan-intimo-premium",
+    title: "Plan Íntimo Premium",
+    description:
+      "Rejuvenecimiento vaginal — 3 sesiones. Salud y bienestar físico, vida sexual y emocional.",
+    precio: "₲4.500.000",
+    items: [
+      "Reduce la sequedad y el dolor en las relaciones íntimas",
+      "Alivia la incontinencia urinaria leve",
+      "Aumenta la lubricación natural y el placer en la pareja",
+      "Mayor seguridad, comodidad y confianza en el día a día",
+    ],
+    validUntil: "Hasta el 30 de septiembre",
+    whatsappMessage: "Hola, quiero info sobre el Plan Íntimo Premium",
+  },
+  {
+    slug: "pilates-hombres",
+    title: "Pilates para hombres",
+    description: "8 clases semanales — animate a cuidarte.",
+    precio: "₲300.000",
+    items: [
+      "Menos estrés y más concentración",
+      "Abdomen fuerte y mayor resistencia",
+      "Más flexibilidad, movilidad y rendimiento deportivo",
+      "Mejora tu bienestar y tu vida en pareja",
+    ],
+    validUntil: "Hasta el 30 de septiembre",
+    whatsappMessage: "Hola, quiero info sobre Pilates para hombres",
+  },
+  {
+    slug: "adios-manchas",
+    title: "Adiós a las manchas",
+    description: "Tratamiento IPL — luz pulsada intensa, 8 sesiones.",
+    precio: "₲1.200.000",
+    items: [
+      "Borra manchas oscuras por el sol y la edad",
+      "Unifica el tono de la piel y reduce rojeces",
+      "Estimula el colágeno para dar firmeza y suavidad",
+      "Recuperación rápida, volvés a tu rutina de inmediato",
+    ],
+    validUntil: "Hasta el 30 de septiembre",
+    whatsappMessage: "Hola, quiero info sobre la promo Adiós a las manchas",
+  },
+  {
+    slug: "pack-tirze-360",
+    title: "Pack Tirze 360",
+    description:
+      "5 sesiones — tratamientos corporales para tensar la piel, estimular colágeno y mejorar el drenaje linfático (zona a elegir).",
+    precio: "₲600.000",
+    items: ["Radiofrecuencia", "Ondas rusas para tonificar", "Drenaje linfático"],
+    validUntil: "Hasta el 30 de septiembre",
+    whatsappMessage: "Hola, quiero info sobre el Pack Tirze 360",
+  },
+  {
+    slug: "pack-belleza-total",
+    title: "Pack Belleza Total",
+    description: "60 minutos para resaltar la belleza natural de tu rostro.",
+    precio: "₲250.000",
+    items: ["Limpieza de cutis profunda", "Shock de nutrición facial", "Dermaplaning"],
+    validUntil: "Hasta el 30 de septiembre",
+    whatsappMessage: "Hola, quiero info sobre el Pack Belleza Total",
+  },
+  {
+    slug: "programa-reductivo",
+    title: "Programa reductivo",
+    description: "8 sesiones — moldeá tu figura (zona abdomen).",
+    precio: "₲800.000",
+    items: [
+      "Masaje reductor y modelador",
+      "Lipoláser rompe grasa",
+      "Drenaje linfático",
+      "Ondas rusas para tonificar",
+    ],
+    validUntil: "Hasta el 30 de septiembre",
+    whatsappMessage: "Hola, quiero info sobre el Programa reductivo",
+  },
+  {
+    slug: "piel-nueva-co2",
+    title: "Piel Nueva CO2",
+    description: "3 sesiones — rejuvenecé tu piel (previa evaluación).",
+    precio: "₲2.500.000",
+    items: [
+      "Manchas causadas por el sol o la edad",
+      "Arrugas y líneas de expresión",
+      "Cicatrices de acné o quirúrgicas",
+      "Poros dilatados",
+      "Más elasticidad y firmeza",
+    ],
+    validUntil: "Hasta el 30 de septiembre",
+    whatsappMessage: "Hola, quiero info sobre Piel Nueva CO2",
+  },
+  {
+    slug: "labios-lifting",
+    title: "Labios & Lifting",
+    description: "Relleno de labios y microlifting (previa evaluación).",
+    precio: "₲2.500.000",
+    items: [
+      "Aporta volumen y definición a los labios",
+      "Mejora la armonía facial",
+      "Apariencia más fresca",
+    ],
+    validUntil: "Hasta el 30 de septiembre",
+    whatsappMessage: "Hola, quiero info sobre Labios & Lifting",
+  },
+];
 
 export type Testimonio = {
   nombre: string;

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { activePromotion } from "@/content/site";
+import { promotions } from "@/content/site";
 import { WhatsappButton } from "@/components/WhatsappButton";
 import { fadeUpVariants } from "@/lib/motion";
 
@@ -10,7 +10,8 @@ export function PromoBanner() {
   const reduced = !!useReducedMotion();
   const variants = fadeUpVariants(reduced);
 
-  if (!activePromotion.active) return null;
+  const activePromotion = promotions[0];
+  if (!activePromotion) return null;
 
   return (
     <section
@@ -64,7 +65,7 @@ export function PromoBanner() {
               Quiero esta promo
             </WhatsappButton>
             <Link
-              href="/#promocion"
+              href="/promociones"
               className="text-xs font-medium text-[var(--navara-cream)]/70 hover:text-[var(--navara-cream)] hover:underline"
             >
               Ver todas las promociones
