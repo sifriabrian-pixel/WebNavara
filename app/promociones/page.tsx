@@ -67,18 +67,6 @@ export default function PromocionesPage() {
           para conocer nuestros tratamientos y precios.
         </p>
       )}
-
-      <p className="mt-10 text-xs text-[var(--navara-brown)]/70">
-        Para editar estas promociones, actualizá el array{" "}
-        <code className="rounded bg-[var(--navara-cream)] px-1.5 py-0.5">
-          promotions
-        </code>{" "}
-        en{" "}
-        <code className="rounded bg-[var(--navara-cream)] px-1.5 py-0.5">
-          content/site.ts
-        </code>
-        .
-      </p>
     </section>
   );
 }
